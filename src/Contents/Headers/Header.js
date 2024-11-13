@@ -8,10 +8,9 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 
-export default function Header() {
+export default function Header({ title }) {
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
-
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -23,7 +22,7 @@ export default function Header() {
 
   return (
     <Box sx={{ flexGrow: 1 } }>
-      <AppBar position="static" elevation={0} sx={{ backgroundColor: 'background.paper'}}>
+      <AppBar position="static" elevation={0} sx={{ backgroundColor: 'primary.dark'}}>
         <Toolbar>
             <Typography
                     component="div"
@@ -36,11 +35,11 @@ export default function Header() {
                     fontFamily: 'monospace',
                     fontWeight: 1000,
                     letterSpacing: '.1rem',
-                    color: 'primary.main',
+                    color: 'background.paper',
                     textDecoration: 'none',
                     }}
                 >
-                    WEBSITE DESA
+                    {title}
             </Typography>
           {auth && (
             <div>
@@ -49,8 +48,8 @@ export default function Header() {
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                color='primary'
                 onClick={handleMenu}
+                sx={{color:'background.paper'}}
               >
                 <AccountCircle />
               </IconButton>

@@ -4,15 +4,17 @@ import { SideLeftList } from '../../Data/SideLeftLists';
 import YardIcon from '@mui/icons-material/Yard';
 import LogoutIcon from '@mui/icons-material/Logout';
 
-const SideLeft = () => {
+
+const SideLeft = ({linkClicked,title,onLogout}) => {
     const items = SideLeftList();
     
     // Selected item function
-    const [selectedIndex, setSelectedIndex] = React.useState(1);
-    const handleListItemClick = (event, index) => {
+    const [selectedIndex, setSelectedIndex] = React.useState(0);
+    const handleListItemClick = (event, index, linkTo,titleclicked) => {
         setSelectedIndex(index);
+        linkClicked(linkTo)
+        title(titleclicked)
     };
-
     return (
         <Box sx={{bgcolor: 'background.paper', minHeight:'99vh'}}>
             <List>
@@ -54,7 +56,7 @@ const SideLeft = () => {
                     <ListItem key={index} disablePadding sx={{borderRadius:'10%'}}>
                         <ListItemButton
                             selected={selectedIndex === index}
-                            onClick={(event) => handleListItemClick(event, index)}
+                            onClick={(event) => handleListItemClick(event, index,item.linkTo,item.title)}
                         >
                             <ListItemIcon
                                  sx={{
@@ -79,8 +81,8 @@ const SideLeft = () => {
                 </ListItem>    
                 <ListItem  disablePadding sx={{borderRadius:'10%'}}>
                         <ListItemButton
-                            selected={selectedIndex === 100}
-                            onClick={(event) => handleListItemClick(event, 100)}
+                            selected={selectedIndex === 100}                            
+                            onClick={onLogout}
                         >
                             <ListItemIcon
                                  sx={{
@@ -91,7 +93,8 @@ const SideLeft = () => {
                             </ListItemIcon>
                             <ListItemText primary='Logout'  sx={{
                                     color: selectedIndex === 100 ? 'primary.dark' : 'primary.light',
-                                }}/>
+                                }}
+                                />
                         </ListItemButton>
                     </ListItem>
                 

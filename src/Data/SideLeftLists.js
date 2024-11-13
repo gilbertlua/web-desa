@@ -1,35 +1,40 @@
 import PaymentIcon from '@mui/icons-material/Payment';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
-import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 import CollectionsIcon from '@mui/icons-material/Collections';
-
+import { Dashboard } from '../Contents/Sections/Dashboard/Dashboard';
+import EnhancedTable from '../Contents/Sections/TableProgram/TableProgram';
+import FinancialReportTable from '../Contents/Sections/Financial/Financial';
+import Announcement from '../Contents/Sections/Announcement/Annaunchment';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import Gallery from '../Contents/Sections/Gallery/Gallery';
 export const SideLeftList = () => {
     return([
         {
             title:'Dashboard',
-            icon: <DashboardIcon/>
+            icon: <DashboardIcon/>,
+            linkTo : <Dashboard/>
+        },
+        
+        {
+            title:'Program Prioritas',
+            icon: <AssignmentIcon/>,
+            linkTo:<EnhancedTable/>
         },
         {
             title:'Keuangan',
-            icon: <PaymentIcon/>
-        },
-        {
-            title:'Pengaduan',
-            icon: <ChatBubbleIcon/>
+            icon: <PaymentIcon/>,
+            linkTo:<FinancialReportTable/>
         },
         {
             title:'Pengumuman',
-            icon: <NotificationsActiveIcon/>
-        },
-        {
-            title:'Bantuan',
-            icon: <CardGiftcardIcon/>
+            icon: <NotificationsActiveIcon/>,
+            linkTo:<Announcement/>
         },
         {
             title:'Dokumentasi',
-            icon: <CollectionsIcon/>
+            icon: <CollectionsIcon/>,
+            linkTo:<Gallery/>
         },
     ])
 } 
